@@ -47,13 +47,12 @@ public class WebSecurityConfig {
           .anyRequest()
           .authenticated()
         )
-        .exceptionHandling()
-        .accessDeniedPage("/api/users/about")
-        .accessDeniedPage("/api/users/data")
-        .accessDeniedPage("/api/users/transaction/**")
+        .cors()
     ;
 
     http.apply(new JwtTokenFilterConfigurer(jwtTokenProvider));
+
+    http.httpBasic();
 
     return http.build();
   }

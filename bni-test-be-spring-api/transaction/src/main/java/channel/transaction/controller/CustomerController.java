@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost"})
+@CrossOrigin(origins = "*")
 public class CustomerController {
   @Autowired
   private CustomerService customerService;
@@ -51,7 +51,9 @@ public class CustomerController {
   }
 
   @GetMapping(
-    path = "/api/users/about"
+    path = "/api/users/about",
+    consumes = MediaType.ALL_VALUE,
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   public UserResponse<Customer> getUser(HttpServletRequest request) {
     Object customer = request.getAttribute("UserId");

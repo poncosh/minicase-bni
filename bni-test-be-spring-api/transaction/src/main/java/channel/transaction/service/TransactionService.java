@@ -74,7 +74,7 @@ public class TransactionService {
     customerTransaction.setCreatedAt(now);
     customerTransaction.setCustomerId(Long.parseLong(customerId.toString()));
 
-    customer.setBalance(customer.getBalance() + transactionAmount);
+    customer.setBalance(customer.getBalance() + transactionAmount - 7500);
 
     customerRepository.save(customer);
     customerTransactionRepository.save(customerTransaction);
