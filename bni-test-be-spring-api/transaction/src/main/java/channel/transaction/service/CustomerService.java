@@ -8,9 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import channel.transaction.entity.Customer;
 import channel.transaction.model.RegisterUserRequest;
-import channel.transaction.repository.CustomerDataRepository;
 import channel.transaction.repository.CustomerRepository;
-import channel.transaction.repository.CustomerTransactionRepository;
 import channel.transaction.security.BCrypt;
 import jakarta.transaction.Transactional;
 
@@ -18,12 +16,6 @@ import jakarta.transaction.Transactional;
 public class CustomerService {
   @Autowired
   private CustomerRepository customerRepository;
-
-  @Autowired
-  private CustomerDataRepository customerDataRepository;
-
-  @Autowired
-  private CustomerTransactionRepository customerTransactionRepository;
 
   @Autowired
   private ValidationService validationService;

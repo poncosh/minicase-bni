@@ -37,19 +37,20 @@ public class WebSecurityConfig {
   };
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
       .csrf(AbstractHttpConfigurer::disable)
-      .authorizeHttpRequests(req -> req
-        .requestMatchers(WHITE_LIST_URL)
-        .permitAll()
-        .anyRequest()
-        .authenticated()
-        )
         .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+        .authorizeHttpRequests(req -> req
+          .requestMatchers(WHITE_LIST_URL)
+          .permitAll()
+          .anyRequest()
+          .authenticated()
+        )
         .exceptionHandling()
-        .accessDeniedPage("/api/about")
-        .accessDeniedPage("/api/transaction/**")
+        .accessDeniedPage("/api/users/about")
+        .accessDeniedPage("/api/users/data")
+        .accessDeniedPage("/api/users/transaction/**")
     ;
 
     http.apply(new JwtTokenFilterConfigurer(jwtTokenProvider));

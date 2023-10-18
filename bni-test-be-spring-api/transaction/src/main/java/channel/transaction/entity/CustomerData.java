@@ -2,11 +2,15 @@ package channel.transaction.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,13 +26,24 @@ import lombok.Setter;
 public class CustomerData {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonIgnore
   private long id;
 
+  @OneToOne
+  @JoinColumn(
+    name = "customer_id",
+    updatable = false,
+    insertable = false
+  )
+  @JsonIgnore
+  private Customer customer;
+
   @Column(name = "customer_id")
+  @JsonIgnore
   private long customerId;
 
   @Column(name = "identity_id", unique = true)
-  private long identityId;
+  private String identityId;
 
   private String address;
 

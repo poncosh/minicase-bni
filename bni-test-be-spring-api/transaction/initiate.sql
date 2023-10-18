@@ -15,7 +15,7 @@ create table `customers` (
 create table `customer_data` (
 	id INT auto_increment primary key not null,
   customer_id INT not null,
-  identity_id INT not null,
+  identity_id VARCHAR(16) not null,
   address VARCHAR(255) not null,
   phone_number VARCHAR(50) not null,
   date_of_birth DATE not null,
