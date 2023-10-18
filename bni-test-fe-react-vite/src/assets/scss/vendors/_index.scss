@@ -1,0 +1,82 @@
+@forward "bootstrap";
+
+#preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+#preloader .loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#navigation-id:hover,
+#services-id:hover,
+#user-balance-id:hover,
+#pagination-id:hover,
+#topup-form #topup-submit:hover,
+#payment-form #payment-submit:hover {
+  cursor: pointer;
+}
+
+.sims-logo {
+  position: absolute;
+  top: 15px;
+  left: 10vh;
+}
+
+.target-content-bni:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.sims-logo:hover {
+  cursor: pointer;
+}
+
+.navbar-toggler {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+#picture-edit {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#picture-edit:hover {
+  cursor: pointer;
+  display: block;
+  opacity: 0.7;
+}
+
+.nav-link {
+  color: #000000 !important;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  color: #5a5a5a !important;
+  cursor: pointer !important;
+}
+
+.nav-link.active {
+  color: #f42619 !important;
+}
+
+.colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-info {
+  background-color: #3fc3ee !important;
+}
+
+.no-border {
+  border: 0;
+}

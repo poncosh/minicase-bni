@@ -21,7 +21,7 @@ import channel.transaction.service.TransactionService;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost"})
+@CrossOrigin(origins = "*")
 public class TransactionController {
   @Autowired
   private TransactionService transactionService;
