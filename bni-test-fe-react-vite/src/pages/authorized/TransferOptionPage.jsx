@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import bniLogo from "../../assets/img/bni_logo.png";
 import bankLogo from "../../assets/img/bank_logo.png";
 import { HeaderComponent } from "../../components/screen/HeaderComponent";
@@ -9,6 +9,10 @@ import { useAuth } from "../../stores/auth/context";
 export const TransferOptionPage = () => {
   const navigate = useNavigate();
   const { authState } = useAuth();
+
+  useEffect(() => {
+    document.title = "MiniCase BNI | Tranfer Type";
+  }, []);
 
   if (!authState?.authenticated) {
     return <Navigate to={"/login"} replace />;

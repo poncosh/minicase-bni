@@ -18,6 +18,7 @@ export const PaymentsPage = () => {
   const monthLocation = pathname.split("/")[3];
 
   useEffect(() => {
+    document.title = "MiniCase BNI | Payments";
     dispatch(getPaymentTransaction()).then(({ payload }) => {
       setPayments(payload);
       console.log(payload);

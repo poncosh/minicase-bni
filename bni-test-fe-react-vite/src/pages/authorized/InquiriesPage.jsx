@@ -14,6 +14,7 @@ export const InquiriesPage = () => {
   const { authState } = useAuth();
 
   useEffect(() => {
+    document.title = "MiniCase BNI | Inquiries";
     dispatch(getInquiryTransaction()).then(({ payload }) =>
       setInquiries(payload)
     );

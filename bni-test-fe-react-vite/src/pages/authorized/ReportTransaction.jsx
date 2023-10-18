@@ -12,6 +12,7 @@ export const ReportTransaction = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    document.title = "MiniCase BNI | Report";
     dispatch(getDetailTransaction(state.id)).then(({ payload }) => {
       setItem(payload);
     });

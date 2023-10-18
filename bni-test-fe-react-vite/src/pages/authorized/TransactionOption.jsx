@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HeaderComponent } from "../../components/screen/HeaderComponent";
 import inquiries from "../../assets/img/inquiries.jpg";
 import payment from "../../assets/img/payment.jpg";
@@ -9,6 +9,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 export const TransactionOption = () => {
   const { authState } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "MiniCase BNI | Transactions Type";
+  }, []);
 
   if (!authState?.authenticated) {
     return <Navigate to={"/login"} replace />;

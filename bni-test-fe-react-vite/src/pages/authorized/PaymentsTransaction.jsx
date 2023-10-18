@@ -10,7 +10,7 @@ export const PaymentsTransaction = () => {
   );
 
   useEffect(() => {
-    document.title = `SIMS - PPOB | Transaksi ${
+    document.title = `MiniCase BNI | Payments ${
       month.charAt(0).toUpperCase() + month.slice(1)
     }`;
   }, [month]);

@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { HeaderComponent } from "../../components/screen/HeaderComponent";
 import { useAuth } from "../../stores/auth/context";
 import { Navigate, useNavigate } from "react-router-dom";
-import { faUser, faListNumeric } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faListNumeric,
+  faDatabase,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
 
@@ -34,6 +38,7 @@ export const UpdateAccountPage = () => {
   });
 
   useEffect(() => {
+    document.title = "MiniCase BNI | Account";
     setData({
       identityId: authState?.user?.customerData?.identityId,
       address: authState?.user?.customerData?.address,
@@ -194,7 +199,7 @@ export const UpdateAccountPage = () => {
                 id="dateOfBirth-edit"
                 style={{ height: "43px" }}
               >
-                <FontAwesomeIcon icon={faListNumeric} />
+                <FontAwesomeIcon icon={faDatabase} />
               </span>
               <input
                 aria-describedby="dateOfBirth-edit"

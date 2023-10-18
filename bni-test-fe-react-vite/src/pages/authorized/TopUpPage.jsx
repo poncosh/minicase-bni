@@ -40,7 +40,7 @@ export const TopUpPage = () => {
   ];
 
   useEffect(() => {
-    document.title = "SIMS - PPOB | Top Up";
+    document.title = "MiniCase BNI | Setoran";
   }, []);
 
   const handleAmount = (value) => {

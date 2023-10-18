@@ -43,7 +43,7 @@ export const TransferWithinBni = () => {
   ];
 
   useEffect(() => {
-    document.title = "SIMS - PPOB | Top Up";
+    document.title = "MiniCase BNI | Transfer BNI";
   }, []);
 
   const handleInput = (event) => {
