@@ -51,7 +51,7 @@ public class CustomerController {
   }
 
   @GetMapping(
-    path = "/api/about"
+    path = "/api/users/about"
   )
   public UserResponse<Customer> getUser(HttpServletRequest request) {
     Object customer = request.getAttribute("UserId");
