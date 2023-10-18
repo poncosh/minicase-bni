@@ -13,6 +13,9 @@ export const TransferOptionPage = () => {
   if (!authState?.authenticated) {
     return <Navigate to={"/login"} replace />;
   }
+  if (!authState?.user?.customerData) {
+    return <Navigate to={"/account"} replace />;
+  }
   return (
     <>
       <HeaderComponent />

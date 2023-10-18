@@ -26,7 +26,6 @@ import lombok.Setter;
 public class CustomerTransaction {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @JsonIgnore
   private long id;
 
   @ManyToOne
@@ -47,6 +46,10 @@ public class CustomerTransaction {
 
   private long tariff;
 
-  @Column(name = "created_at")
-  private LocalDate createdAt;
+  @Column(
+    name = "created_at",
+    insertable = false,
+    updatable = false
+  )
+  private String createdAt;
 }

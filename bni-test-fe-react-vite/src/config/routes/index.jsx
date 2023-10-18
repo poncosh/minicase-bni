@@ -8,6 +8,11 @@ import {
   TransferExternal,
   TransferOptionPage,
   TransferWithinBni,
+  UpdateAccountPage,
+  InquiriesPage,
+  PaymentsPage,
+  PaymentsTransaction,
+  ReportTransaction,
 } from "../../pages/authorized";
 
 export const router = createBrowserRouter([
@@ -35,12 +40,34 @@ export const router = createBrowserRouter([
         element: <TransactionOption />,
       },
       {
+        path: "/account",
+        element: <UpdateAccountPage />,
+      },
+      {
         path: "/transfer/bni",
         element: <TransferWithinBni />,
       },
       {
         path: "/transfer/others",
         element: <TransferExternal />,
+      },
+      {
+        path: "/transaction/inquiries",
+        element: <InquiriesPage />,
+      },
+      {
+        path: "/transaction/detail",
+        element: <ReportTransaction />,
+      },
+      {
+        path: "/transaction/payments",
+        element: <PaymentsPage />,
+        children: [
+          {
+            path: "/transaction/payments/:month",
+            element: <PaymentsTransaction />,
+          },
+        ],
       },
     ],
   },

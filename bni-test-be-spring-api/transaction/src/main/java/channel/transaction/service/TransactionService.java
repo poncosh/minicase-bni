@@ -31,7 +31,6 @@ public class TransactionService {
   @Transactional
   public void newTransactionWithinBank (NewTransaction request, Object customerId) {
     validationService.validate(request);
-    LocalDate now = LocalDate.now();
     long transactionAmount = -request.getAmount();
 
     Customer customer = customerRepository.findById(customerId.toString())
@@ -45,7 +44,6 @@ public class TransactionService {
     customerTransaction.setName(request.getName());
     customerTransaction.setAmount(transactionAmount);
     customerTransaction.setTariff(0);
-    customerTransaction.setCreatedAt(now);
     customerTransaction.setCustomerId(Long.parseLong(customerId.toString()));
 
     customer.setBalance(customer.getBalance() + transactionAmount);
@@ -57,7 +55,6 @@ public class TransactionService {
   @Transactional
   public void newTransactionOutsideBank (NewTransaction request, Object customerId) {
     validationService.validate(request);
-    LocalDate now = LocalDate.now();
     long transactionAmount = -request.getAmount();
 
     Customer customer = customerRepository.findById(customerId.toString())
@@ -71,7 +68,6 @@ public class TransactionService {
     customerTransaction.setName(request.getName());
     customerTransaction.setAmount(transactionAmount);
     customerTransaction.setTariff(7500);
-    customerTransaction.setCreatedAt(now);
     customerTransaction.setCustomerId(Long.parseLong(customerId.toString()));
 
     customer.setBalance(customer.getBalance() + transactionAmount - 7500);
@@ -89,8 +85,15 @@ public class TransactionService {
       .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
 
     customer.setBalance(customer.getBalance() + request.getAmount());
+
+    CustomerTransaction customerTransaction = new CustomerTransaction();
+    customerTransaction.setName("Setoran Online");
+    customerTransaction.setAmount(request.getAmount());
+    customerTransaction.setTariff(0);
+    customerTransaction.setCustomerId(Long.parseLong(customerId.toString()));
     
     customerRepository.save(customer);
+    customerTransactionRepository.save(customerTransaction);
   }
 
   public CustomerTransaction getTransactionById (String id) {
@@ -99,7 +102,7 @@ public class TransactionService {
   }
 
   public List<CustomerTransaction> getInquiryTransaction (Object customerId) {
-    LocalDate ninetyDaysAgo = LocalDate.now().minusDays(90);
+    String ninetyDaysAgo = LocalDate.now().minusDays(90).toString();
     return customerTransactionRepository.findWithDateAfter(Long.parseLong(customerId.toString()), ninetyDaysAgo);
   }
 

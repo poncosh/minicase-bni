@@ -63,10 +63,13 @@ export const TransferWithinBni = () => {
       });
     }
     Swal.fire({
-      title: `Anda yakin untuk Top Up sebesar ${new Intl.NumberFormat("id-ID", {
-        style: "currency",
-        currency: "IDR",
-      }).format(data.amount)}?`,
+      title: `Anda yakin untuk transfer sebesar ${new Intl.NumberFormat(
+        "id-ID",
+        {
+          style: "currency",
+          currency: "IDR",
+        }
+      ).format(data.amount)}?`,
       customClass: {
         icon: "no-border",
       },
@@ -104,6 +107,9 @@ export const TransferWithinBni = () => {
 
   if (!authState?.authenticated) {
     return <Navigate to="/login" replace />;
+  }
+  if (!authState?.user?.customerData) {
+    return <Navigate to={"/account"} replace />;
   }
   return (
     <>

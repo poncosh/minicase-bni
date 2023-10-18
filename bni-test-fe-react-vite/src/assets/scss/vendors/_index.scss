@@ -32,6 +32,12 @@
 .target-content-bni:hover {
   cursor: pointer;
   opacity: 0.6;
+  transform: scale(1.05);
+}
+
+.tr-card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .sims-logo:hover {

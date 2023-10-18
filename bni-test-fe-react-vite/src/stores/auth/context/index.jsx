@@ -122,9 +122,15 @@ export const AuthProvider = ({ children }) => {
         }
       );
 
+      const { data: user } = await axios.get(`${baseURL}/users/about`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("MINICASE_BNI_TOKEN")}`,
+        },
+      });
+
       setAuthState({
         ...authState,
-        user: data?.data,
+        user: user?.data,
       });
 
       return data;
